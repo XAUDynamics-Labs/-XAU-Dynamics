@@ -31,6 +31,7 @@ XAU-Dynamics-DataPipeline/
 ├── pipeline.py           # Core asynchronous processing logic
 ├── requirements.txt      # Microservice dependencies
 └── Dockerfile            # Containerization for Azure deployment
+
 ```
 🔐 Environment Variables
 To run this microservice securely, the following variables must be configured in your ⁠.env⁠ file or Azure Key Vault: 
@@ -40,4 +41,24 @@ To run this microservice securely, the following variables must be configured in
 | `AZURE_COSMOS_URI` | Endpoint for Azure Cosmos DB | `https://xau-dynamics-db.documents...` |
 | `AZURE_COSMOS_KEY` | Primary API access key | `************************` |
 | `GOLD_FEED_URL` | Primary WebSocket market feed | `wss://stream-api.xau-dynamics.io/v3/gold` |
+
+🚀 Deployment Strategy (Microsoft Azure)
+This microservice is strictly containerized to leverage the Microsoft Azure ecosystem for infinite scalability and zero-downtime tolerance:
+ Compute: Deployed via Azure Container Apps to automatically scale instances based on market volatility (CPU/Memory usage).
+ Database: Integrated with Azure Cosmos DB (NoSQL) for sub-10ms write latencies globally.
+ Security: Secrets managed via Azure Key Vault.
+ 
+ 💻 Local Quick Start
+For local development and testing, you can spin up the pipeline using Docker:
+
+# 1. Clone the repository
+git clone [https://github.com/XAUDynamics-Labs/XAU-Dynamics-DataPipeline.git](https://github.com/XAUDynamics-Labs/XAU-Dynamics-DataPipeline.git)
+
+# 2. Build the Docker Image
+docker build -t xau-data-pipeline .
+
+# 3. Run the container
+docker run -d --name xau-pipeline-service xau-data-pipeline
+
+© 2026 XAU Dynamics Labs. Built for the future of quantitative finance.
 
